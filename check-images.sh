@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-IMAGES=$(docker images | awk '{print $1":"$2}' | egrep -v 'REPOSITORY|<none>' | sort -u )
+IMAGES=${@:-$(docker images | awk '{print $1":"$2}' | egrep -v 'REPOSITORY|<none>' | sort -u )}
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 for I in $IMAGES; do
